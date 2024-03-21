@@ -1,0 +1,14 @@
+runtime: python39
+env: standard
+service: ae-fe
+instance_class: F2
+handlers:
+  - url: /
+    static_files: dist/app_engine/browser/index.html
+    upload: dist/app_engine/browser/index.html
+  - url: /(.*)
+    static_files: dist/app_engine/browser/\1
+    upload: dist/app_engine/browser/.*
+  - url: .*
+    script: auto 
+  
